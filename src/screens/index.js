@@ -1,23 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 // react router
 //Common practice to give BrowserRouter alias of Router
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // pages (Actually just components)
 import Dashboard from "./Dashboard";
 import About from "./About";
-import Players from "./Players";
-import Player from "./Player";
 
 import Error from "./Error";
-import Competitions from "./Competitions";
 // navbar
 import Navbar from "../components/Navbar";
-
 import Login from "../components/Login/Login";
 
-const ReactRouterSetup = () => {
-  const [token, setToken] = useState();
+import useToken from "../hooks/useToken";
 
+const ReactRouterSetup = () => {
+  const [token, setToken] = useToken();
   if (!token) {
     return <Login setToken={setToken} />;
   }
@@ -35,8 +32,8 @@ const ReactRouterSetup = () => {
         </Route>
         {/* <Route path="/players">
           <Players />
-        </Route> */}
-        {/* <Route path="/competitions">
+        </Route> 
+        <Route path="/competitions">
           <Competitions />
         </Route>
         <Route path="/player/:id" children={<Player />}></Route> */}
