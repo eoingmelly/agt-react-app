@@ -49,7 +49,6 @@ const Login = ({ setToken }) => {
           password: signee.password,
         });
 
-        console.log(token);
         setToken(token);
       } else {
         setPlayer({ ...player, email: "", password: "" });
