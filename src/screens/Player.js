@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import players from "../data";
+import { players } from "../data";
 import { Link, useParams } from "react-router-dom";
 const Player = () => {
   const [name, setName] = useState("default name");

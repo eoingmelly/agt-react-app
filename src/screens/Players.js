@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import data from "../data";
+import { players as playersData } from "../data";
 
 const Players = () => {
-  const [players, setPlayers] = useState(data);
+  const [players] = useState(playersData);
 
   return (
     <div>
@@ -10,7 +10,7 @@ const Players = () => {
       {players.map((plr) => {
         const { id, displayName, handicap, image } = plr;
         return (
-          <article key={id} className="product">
+          <article key={id} className="player">
             <img src={image} alt={displayName} />
             <h4>{displayName}</h4>
             <p>{handicap}</p>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import data from "../../data";
+import { players as playersData } from "../../data";
 
 import "../../styles/login.css";
 
@@ -18,7 +18,7 @@ async function loginUser(credentials) {
 }
 
 const Login = ({ setToken }) => {
-  const [players, setPlayers] = useState(data);
+  const [players, setPlayers] = useState(playersData);
 
   const [player, setPlayer] = useState({
     email: "",

@@ -1,4 +1,4 @@
-const players = [
+export const players = [
   {
     id: 1,
     displayName: "Melly",
@@ -88,4 +88,44 @@ const players = [
   },
 ];
 
-export default players;
+export const upcomingCompetitions = [
+  {
+    id: 1,
+    name: "AGT 2021 Golden Triangle",
+    competition_type: "Stableford Final",
+    courses: [
+      {
+        id: 1,
+        name: "Royal Course (Vale Do Lobo)",
+        rating: "133",
+        image:
+          "https://images.myguide-cdn.com/algarve/companies/vale-do-lobo-royal-course/large/vale-do-lobo-royal-course-627759.jpg",
+        date: "Fri Sep 17 2021 13:40:00 GMT+0000 (Greenwich Mean Time)",
+        par: 72,
+        metres: 6059,
+      },
+      {
+        id: 2,
+        name: "South Course (Quinta Do Lago)",
+        rating: "127",
+        image:
+          "https://www.portugalgolf.net/xms/img/1400x1200/ebc98/Zmx0cltdPXVzbSZxPTky/L08zbS8tME0zWnJTbS95NHNQLlh4c1UuMmxhd2EvSXVNSjdacy1qc1hacmpzYWp1N1JzcEFzNjY1L0d1TUo3WnMtanNGWnJqc21qdTdSc3k0dHp0ZGty.jpg",
+        date: "Sat Sep 18 2021 13:20:00 GMT+0000 (Greenwich Mean Time)",
+        par: 72,
+        metres: 6488,
+      },
+      {
+        id: 3,
+        name: "Ocean Course (Vale Do Lobo)",
+        rating: "138",
+        image:
+          "https://media-cdn.tripadvisor.com/media/photo-s/04/48/f2/1b/ocean-golf-course.jpg",
+        date: "Sun Sep 19 2021 09:25:00 GMT+0000 (Greenwich Mean Time)",
+        metres: 6137,
+        par: 73,
+      },
+    ],
+    image:
+      "https://www.prestigeproperty.co.uk/property-blog/wp-content/uploads/2018/03/VDL-view2-copy-930x450.jpg",
+  },
+];
