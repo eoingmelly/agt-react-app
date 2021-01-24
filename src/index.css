@@ -295,7 +295,7 @@ p {
   border-top-right-radius: var(--radius);
 
   width: 100%;
-  height: 15rem;
+  height: 12rem;
   object-fit: cover;
   object-position: 80% 0%;
 }
@@ -313,3 +313,30 @@ p {
   text-transform: capitalize;
   cursor: pointer;
 }
+
+.competitionDayResult img {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+
+  width: 45%;
+  height: 5rem;
+  object-fit: cover;
+  object-position: 80% 0%;
+  margin: 10px;
+}
+
+/* 
+.competitionsContainer {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  background-color: #2196f3;
+  padding: 10px;
+}
+
+.competitionsContainer .upcomingCompetitions {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+} */
