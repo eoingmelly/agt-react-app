@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
+import gql from "graphql-tag";
+import { useMutation } from "@apollo/client";
+
 import { players as playersData } from "../../data";
 
 import "../../styles/login.css";
 
-async function loginUser(credentials) {
+async function loginUserLocal(credentials) {
   console.log("calling fetch with ", credentials);
 
   return fetch("http://localhost:8080/login", {
@@ -19,23 +22,33 @@ async function loginUser(credentials) {
 
 const Login = ({ setToken }) => {
   const [players, setPlayers] = useState(playersData);
-
   const [player, setPlayer] = useState({
     email: "",
     password: "",
+  });
+
+  const [loginUser, { loading }] = useMutation(LOGIN_USER, {
+    update(proxy, result) {
+      console.log(result);
+    },
+    variables: player,
   });
 
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setPlayer({ ...player, [name]: value });
-    console.log(name, value);
-    console.log(player);
   };
 
   const signInPlayer = async (e) => {
     e.preventDefault();
+    loginUser();
+  };
 
+  const signInPlayerLocal = async (e) => {
+    e.preventDefault();
+
+    //
     if (player.email && player.password) {
       let signee = players.find(
         (p) =>
@@ -44,7 +57,7 @@ const Login = ({ setToken }) => {
       );
 
       if (signee) {
-        const token = await loginUser({
+        const token = await loginUserLocal({
           email: signee.email,
           password: signee.password,
         });
@@ -58,7 +71,7 @@ const Login = ({ setToken }) => {
 
   return (
     <article className="login-wrapper">
-      <form className="form" onSubmit={signInPlayer}>
+      <form className="form" onSubmit={signInPlayerLocal}>
         <div className="form-control">
           <label htmlFor="email">Email : </label>
           <input
@@ -79,7 +92,7 @@ const Login = ({ setToken }) => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit" onClick={signInPlayer}>
+        <button type="submit" onClick={signInPlayerLocal}>
           Log In
         </button>
       </form>
@@ -99,5 +112,14 @@ const Login = ({ setToken }) => {
 Login.propTypes = {
   setToken: PropTypes.func.isRequired,
 };
+
+const LOGIN_USER = gql`
+  mutation Login_User($email: String!, $password: String!) {
+    LoginUser(data: { email: $email, password: $password }) {
+      success
+      error
+    }
+  }
+`;
 
 export default Login;
